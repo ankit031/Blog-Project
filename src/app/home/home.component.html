@@ -1,0 +1,48 @@
+<div class="w3-card-4">  
+        <div class="w3-padding-8">
+            <div class="w3-row-padding mt-4" >
+              <div class="w3-col">
+                <table class="w3-table-all w3-card-4 table-hover-custom fs">
+                  <thead>
+                    <tr class="bgcolor-eeeeee fs">
+                      <th width="5%">Sr.</th>
+                      <th width="15%" >Title</th>
+                      <th width="45%" class="text-center">Description</th>
+                      <th width="15%" class="text-center">Publish Date</th>
+                      <th width="15%" class="text-center">Author</th>
+                    
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let x of blogs | paginate: { itemsPerPage: 10, currentPage: p }; let i = index;">
+                      <td>{{i+1}}</td>
+                      <td>{{x.title}}</td>
+                      <td class="text-center" >{{x.description}}</td>
+                      <td class="text-center">{{x.publishedDate | date}}</td>
+                      <td class="text-center">{{x.author}}</td>
+   
+                    </tr>              
+                  </tbody>
+                </table>
+                
+                <span *ngIf="blogs == undefined || blogs.length == 0" class="text-center py-4 d-block">
+                  Hi! No Record find yet, added to our Blogs<br>
+                  Please click on "Add" to add blogs.</span>
+              </div>
+            </div>
+           
+            <div class="w3-row-padding w3-margin-top">
+              <div class="w3-col text-center">
+                <div class="row">
+                  <div class="col-12">
+                    <pagination-controls class="w3-right" (pageChange)="p = $event" autoHide="true" responsive="true">
+                    </pagination-controls>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <!-- </form> -->
+        </div>
+
+      </div>
+
